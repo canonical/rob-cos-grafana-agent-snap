@@ -1,4 +1,4 @@
-name: grafana-agent
+name: rob-cos-grafana-agent
 version: '0.38.1'
 
 summary: A telemetry collector for sending metrics, logs, and trace data

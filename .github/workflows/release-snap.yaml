@@ -25,11 +25,11 @@ jobs:
 
       - name: Install dependencies
         run: |
-          sudo snap install --classic --channel edge snapcraft
+          sudo snap install --classic snapcraft
 
       - name: Build Snap
-        run: snapcraft pack --output grafana-agent.snap
+        run: snapcraft pack --output rob-cos-grafana-agent.snap
 
       - name: Upload and Publish Snap
-        run: snapcraft upload --release edge grafana-agent.snap
+        run: snapcraft upload --release edge rob-cos-grafana-agent.snap
 
