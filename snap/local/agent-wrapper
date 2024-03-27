@@ -10,5 +10,5 @@ then
   exec "${SNAP}/agent" -config.expand-env -config.file "/etc/grafana-agent.yaml"
 else
   echo "Launched with minimal default config from the snap" | systemd-cat
-  exec "${SNAP}/agent" run "$SNAP_DATA/etc/grafana-agent.river"
+  exec "${SNAP}/agent" run "/etc/grafana-agent.river"
 fi

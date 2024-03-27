@@ -16,7 +16,7 @@ plugs:
   etc-grafana-agent:
     interface: system-files
     read:
-      - /etc/grafana-agent.yaml
+      - /etc/grafana-agent.river
   logs:
     interface: content
     target: $SNAP/shared-logs
