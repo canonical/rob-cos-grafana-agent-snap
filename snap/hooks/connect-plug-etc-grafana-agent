@@ -1,0 +1,4 @@
+#!/bin/bash
+
+snapctl start --enable ${SNAP_NAME}.grafana-agent
+
