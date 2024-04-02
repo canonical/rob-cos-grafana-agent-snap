@@ -1,13 +1,13 @@
 #!/bin/sh
 
-IS_CONNECTED=$(snapctl is-connected etc-grafana-agent; echo $?)
+IS_CONNECTED=$(snapctl is-connected configuration-read; echo $?)
 
 export AGENT_MODE=flow
 
-if [ "${IS_CONNECTED}" = "0" -a -r /etc/grafana-agent.yaml ]
+if [ "${IS_CONNECTED}" = "0" -a -r $SNAP_COMMON/configuration/grafana-agent.river ]
 then
-  echo "Launched with config from the host filesystem" | systemd-cat
-  exec "${SNAP}/agent" -config.expand-env -config.file "/etc/grafana-agent.yaml"
+  echo "Launched with config from the content-sharing configuration" | systemd-cat
+  exec "${SNAP}/agent" run "$SNAP_COMMON/configuration/grafana-agent.river"
 else
   echo "Launched with minimal default config from the snap" | systemd-cat
   exec "${SNAP}/agent" run "/etc/grafana-agent.river"

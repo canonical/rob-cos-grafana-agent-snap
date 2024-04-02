@@ -17,6 +17,9 @@ plugs:
     interface: system-files
     read:
       - /etc/grafana-agent.river
+  configuration-read:
+    interface: content
+    target: $SNAP_COMMON/configuration
   logs:
     interface: content
     target: $SNAP/shared-logs
