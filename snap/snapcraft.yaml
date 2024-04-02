@@ -1,5 +1,5 @@
 name: rob-cos-grafana-agent
-version: '0.38.1'
+version: '0.40.3'
 
 summary: A telemetry collector for sending metrics, logs, and trace data
 license: Apache-2.0
@@ -57,7 +57,7 @@ parts:
     plugin: go
     source: https://github.com/grafana/agent
     source-type: git
-    source-tag: "v0.38.1"
+    source-tag: "v0.40.3"
     build-snaps:
       - go
     build-packages:
@@ -69,12 +69,12 @@ parts:
       - libsystemd0
       - libbpfcc
       - bpfcc-tools
-    build-environment:
-      - USE_CONTAINER: "0"
-      - GOFLAGS: "-mod=readonly"
-      - CGO_ENABLED: "1"
-      - GO_TAGS: "promtail_journal_enabled"
     override-build: |
+      export USE_CONTAINER=0
+      export GOFLAGS="-mod=readonly -tags=promtail_journal_enabled"
+
       make agent agentctl
+
       cp build/grafana-agent $CRAFT_PART_INSTALL/agent
       cp build/grafana-agentctl $CRAFT_PART_INSTALL/agentctl
+
