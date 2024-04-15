@@ -74,7 +74,9 @@ parts:
       - bpfcc-tools
     override-build: |
       export USE_CONTAINER=0
-      export GOFLAGS="-mod=readonly -tags=promtail_journal_enabled"
+      export GOFLAGS="-mod=readonly"
+      export GO_TAGS="promtail_journal_enabled"
+      export CGO_ENABLED=1
 
       make agent agentctl
 
