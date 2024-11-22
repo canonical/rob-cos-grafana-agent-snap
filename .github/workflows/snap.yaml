@@ -2,12 +2,12 @@ name: snap
 on:
   push:
     tags:
-      - 'core22/*'
+      - 'core24/*'
     branches:
-      - core22
+      - core24
   pull_request:
     branches:
-      - core22
+      - core24
   workflow_dispatch:
 
 jobs:
@@ -18,4 +18,4 @@ jobs:
     with:
       snapcraft-enable-experimental-extensions: true
       runs-on: '["ubuntu-latest", ["self-hosted", "linux", "ARM64", "medium", "noble"]]'
-      snap-track: core22
+      snap-track: core24
