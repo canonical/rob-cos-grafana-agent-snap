@@ -1,0 +1,22 @@
+name: promote
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'rob-cos-grafana-agent version to promote'
+        required: true
+        default: core22
+        type: choice
+        options:
+          - core22
+          - core24
+
+jobs:
+  snaps:
+    uses: canonical/robotics-actions-workflows/.github/workflows/promote.yaml@main
+    secrets:
+      snapstore-login: ${{ secrets.STORE_LOGIN }}
+    with:
+      snap: rob-cos-grafana-agent
+      from-channel: '${{ inputs.version }}/candidate'
+      to-channel: '${{ inputs.version }}/stable'
