@@ -1,0 +1,21 @@
+name: snap
+on:
+  push:
+    tags:
+      - 'core22/*'
+    branches:
+      - core22
+  pull_request:
+    branches:
+      - core22
+  workflow_dispatch:
+
+jobs:
+  snaps:
+    uses: canonical/robotics-actions-workflows/.github/workflows/snap.yaml@main
+    secrets:
+      snapstore-login: ${{ secrets.STORE_LOGIN }}
+    with:
+      snapcraft-enable-experimental-extensions: true
+      runs-on: '["ubuntu-latest", ["self-hosted", "linux", "ARM64", "medium", "noble"]]'
+      snap-track: core22
