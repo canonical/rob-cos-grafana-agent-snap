@@ -30,6 +30,9 @@ plugs:
       - /proc/sys/kernel/random/read_wakeup_threshold
       - /proc/sys/kernel/random/poolsize
       - /proc/sys/kernel/random/urandom_min_reseed_secs
+hooks:
+  configure:
+    plugs: [home]
 apps:
   grafana-agent:
     daemon: simple
@@ -37,6 +40,7 @@ apps:
     install-mode: disable
     restart-condition: on-failure
     plugs:
+      - home
       - network-bind
       - time-control
       - hardware-observe
