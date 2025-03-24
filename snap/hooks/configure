@@ -15,7 +15,7 @@ if [ -n "${CONFIG_PATH}" ]; then
         >&2 echo "Error: configuration-path '${CONFIG_PATH}' does not exist. \
             The path must be relative to root."
         logger -t ${SNAP_NAME} "Error: configuration-path '${CONFIG_PATH}' does not exist. \
-            The path must be relative to root."
+            The path must be relative to `/root`."
         exit 1
     fi
 fi
