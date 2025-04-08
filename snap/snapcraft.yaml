@@ -23,6 +23,10 @@ plugs:
   logs:
     interface: content
     target: $SNAP/shared-logs
+  proc-sys-kernel-threads-max:
+    interface: system-files
+    read:
+      - /proc/sys/kernel/threads-max
   proc-sys-kernel-random:
     interface: system-files
     read:
