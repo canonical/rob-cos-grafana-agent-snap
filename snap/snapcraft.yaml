@@ -20,6 +20,9 @@ plugs:
   configuration-read:
     interface: content
     target: $SNAP_COMMON/configuration
+  rob-cos-common-read:
+    interface: content
+    target: $SNAP_COMMON/rob-cos-shared-data
   logs:
     interface: content
     target: $SNAP/shared-logs
@@ -54,6 +57,7 @@ apps:
       - log-observe
       - etc-grafana-agent
       - proc-sys-kernel-random
+      - rob-cos-common-read
 architectures:
   - build-on: amd64
   - build-on: arm64
